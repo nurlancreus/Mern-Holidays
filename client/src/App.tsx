@@ -24,8 +24,13 @@ export default function App() {
           <Route path="home" element={<HomePage />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="details/:hotelId" element={<DetailsPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="sign-in" element={<SignInPage />} />
+
+          {!isLoggendIn && (
+            <>
+              <Route path="register" element={<RegisterPage />} />
+              <Route path="sign-in" element={<SignInPage />} />
+            </>
+          )}
 
           {isLoggendIn && (
             <>
