@@ -1,0 +1,10 @@
+export { default as HomePage } from "./HomePage";
+export { default as AddHotelPage } from "./AddHotelPage";
+export { default as BookingPage } from "./BookingPage";
+export { default as DetailsPage } from "./DetailsPage";
+export { default as EditHotelPage } from "./EditHotelPage";
+export { default as MyBookingsPage } from "./MyBookingsPage";
+export { default as MyHotelsPage } from "./MyHotelsPage";
+export { default as SearchPage } from "./SearchPage";
+export { default as RegisterPage } from "./RegisterPage";
+export { default as SignInPage } from "./SignInPage";
