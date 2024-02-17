@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
+import { useRegister } from "./useRegister";
 
-type TRegisterFormData = {
+export type TRegisterFormData = {
   firstName: string;
   lastName: string;
   email: string;
@@ -16,8 +17,10 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm<TRegisterFormData>();
 
+  const { mutate: signIn, isPending } = useRegister();
+
   const onSubmit = (formData: TRegisterFormData) => {
-    console.log(formData);
+    signIn(formData);
   };
 
   return (
