@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
+// IMPORT ROUTES
+import userRoutes from "./routes/users";
 
 // CONFIGURATION
 dotenv.config();
@@ -14,12 +16,10 @@ app.use(cors());
 const PORT = process.env.PORT || 7000;
 const MONGODB_URL = process.env.MONGO_DATABASE_URL!;
 
-app.get("/api/test", async (req: Request, res: Response) => {
-  res.json({ message: "hello" });
-});
+app.use("/api/users", userRoutes);
 
 // CONNECTION
-mongoose.connect(MONGODB_URL);
+mongoose.connect(MONGODB_URL, );
 
 app.listen(PORT, () => {
   console.log("server running");
