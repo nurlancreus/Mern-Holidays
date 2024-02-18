@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useSignIn } from "./useSignIn";
+import { Link } from "react-router-dom";
 
 export type TSignInFormData = {
   email: string;
@@ -64,7 +65,16 @@ export default function SignInForm() {
           <span className="text-red-500">{errors.password.message}</span>
         )}
       </label>
-      <div className="flex justify-end">
+      <div className="flex items-center justify-between">
+        <span>
+          Not Registered?{" "}
+          <Link
+            to="/register"
+            className="text-blue-500 underline underline-offset-2"
+          >
+            Create an account here
+          </Link>
+        </span>
         <button className="bg-blue-600 p-2 text-lg font-bold text-white hover:bg-blue-500">
           Sign in
         </button>

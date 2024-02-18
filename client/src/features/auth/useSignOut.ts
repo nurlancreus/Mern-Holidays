@@ -1,21 +1,19 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { TRegisterFormData } from "./RegisterForm";
 import * as authServices from "@/services/authServices";
 import { useAppContext } from "@/context/AppContextProvider";
 import { useNavigate } from "react-router-dom";
 
-export const useRegister = () => {
+export const useSignOut = () => {
   const queryClient = useQueryClient();
   const { showToast } = useAppContext();
   const navigate = useNavigate();
 
   return useMutation({
-    mutationFn: (formData: TRegisterFormData) =>
-      authServices.register(formData),
+    mutationFn: authServices.signOut,
     onSuccess: async () => {
       await queryClient.invalidateQueries({ queryKey: ["validateToken"] });
-      showToast({ type: "SUCCESS", message: "User successfully register!" });
-      navigate("/");
+      showToast({ type: "SUCCESS", message: "User successfully sign out!" });
+      navigate("/sign-in");
     },
     onError: (error) => {
       showToast({ type: "ERROR", message: error.message });

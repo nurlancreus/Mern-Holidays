@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { useRegister } from "./useRegister";
+import { Link } from "react-router-dom";
 
 export type TRegisterFormData = {
   firstName: string;
@@ -30,7 +31,7 @@ export default function RegisterForm() {
       className="flex flex-col gap-5"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 className="text-3xl font-bold mb-2">Create an Account </h2>
+      <h2 className="mb-2 text-3xl font-bold">Create an Account </h2>
       <div className="flex flex-col gap-5 md:flex-row">
         <label
           htmlFor="firstName"
@@ -122,7 +123,16 @@ export default function RegisterForm() {
           <span className="text-red-500">{errors.confirmPassword.message}</span>
         )}
       </label>
-      <div className="flex justify-end">
+      <div className="flex items-center justify-between">
+        <span>
+          Already have an account?{" "}
+          <Link
+            to="/sign-in"
+            className="text-blue-500 underline underline-offset-2"
+          >
+            Sign in here
+          </Link>
+        </span>
         <button className="bg-blue-600 p-2 text-lg font-bold text-white hover:bg-blue-500">
           Create Account
         </button>

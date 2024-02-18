@@ -1,8 +1,11 @@
 import { useAppContext } from "@/context/AppContextProvider";
+import { useSignOut } from "@/features/auth/useSignOut";
 import { Link } from "react-router-dom";
 
 export default function Header() {
   const { isLoggedIn } = useAppContext();
+
+  console.log(isLoggedIn);
 
   return (
     <header className="bg-blue-800 py-6 ">
@@ -14,9 +17,19 @@ export default function Header() {
         <div className="flex items-center gap-4">
           {isLoggedIn ? (
             <>
-              <Link to="/my-bookings">My Bookings</Link>
-              <Link to="/my-hotels">My Hotels</Link>
-              <button>Sign out</button>
+              <Link
+                className="flex items-center px-3 font-bold text-white transition hover:bg-blue-600"
+                to="/my-bookings"
+              >
+                My Bookings
+              </Link>
+              <Link
+                className="flex items-center px-3 font-bold text-white transition hover:bg-blue-600"
+                to="/my-hotels"
+              >
+                My Hotels
+              </Link>
+              <SignOutButton />
             </>
           ) : (
             <>
@@ -38,5 +51,20 @@ export default function Header() {
         </div>
       </div>
     </header>
+  );
+}
+
+function SignOutButton() {
+  const { mutate: signOut } = useSignOut();
+
+  return (
+    <button
+      className="bg-white px-3 py-1 font-bold text-blue-600 hover:bg-gray-100"
+      onClick={() => {
+        signOut();
+      }}
+    >
+      Sign out
+    </button>
   );
 }
