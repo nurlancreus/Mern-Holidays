@@ -17,15 +17,20 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm<TRegisterFormData>();
 
-  const { mutate: signIn, isPending } = useRegister();
+  const { mutate: signIn } = useRegister();
 
   const onSubmit = (formData: TRegisterFormData) => {
     signIn(formData);
   };
 
   return (
-    <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
-      <h2 className="text-3xl font-bold">Create an Account </h2>
+    <form
+      id="registerForm"
+      name="registerForm"
+      className="flex flex-col gap-5"
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <h2 className="text-3xl font-bold mb-2">Create an Account </h2>
       <div className="flex flex-col gap-5 md:flex-row">
         <label
           htmlFor="firstName"
@@ -117,11 +122,11 @@ export default function RegisterForm() {
           <span className="text-red-500">{errors.confirmPassword.message}</span>
         )}
       </label>
-      <span>
+      <div className="flex justify-end">
         <button className="bg-blue-600 p-2 text-lg font-bold text-white hover:bg-blue-500">
           Create Account
         </button>
-      </span>
+      </div>
     </form>
   );
 }
