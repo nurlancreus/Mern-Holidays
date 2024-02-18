@@ -28,7 +28,9 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 
 // CONNECTION
-mongoose.connect(MONGODB_URL);
+mongoose
+  .connect(MONGODB_URL)
+  .then(() => console.log(`Connected to ${MONGODB_URL}`));
 
 app.listen(PORT, () => {
   console.log("server running");
