@@ -37,3 +37,7 @@ export const loginUser = async (req: Request, res: Response) => {
   }
 };
 
+export const validateToken = (req: Request, res: Response) => {
+
+  res.status(200).send({userId: req.userId})
+};

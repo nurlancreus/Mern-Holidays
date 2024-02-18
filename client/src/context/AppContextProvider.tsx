@@ -1,17 +1,18 @@
+import { useValidateToken } from "@/features/auth/useValidateToken";
 import Toast from "@/shared/Toast";
 import { ReactNode, createContext, useContext, useState } from "react";
 
 export type TToastMessage = {
   message?: string;
-  type?:  "SUCCESS" | "ERROR";
+  type?: "SUCCESS" | "ERROR";
 };
 
 type TAppContext = {
   showToast: (toastMessage: TToastMessage) => void;
+  isLoggedIn: boolean;
 };
 
 const AppContext = createContext<TAppContext | null>(null);
-
 type TAppContextProviderProps = {
   children: ReactNode;
 };
@@ -19,6 +20,7 @@ type TAppContextProviderProps = {
 export default function AppContextProvider({
   children,
 }: TAppContextProviderProps) {
+  const { isError } = useValidateToken();
   const [toast, setToast] = useState<TToastMessage | null>(null);
 
   const showToast = (toastMessage: TToastMessage) => {
@@ -30,6 +32,7 @@ export default function AppContextProvider({
   return (
     <AppContext.Provider
       value={{
+        isLoggedIn: !isError,
         showToast,
       }}
     >
