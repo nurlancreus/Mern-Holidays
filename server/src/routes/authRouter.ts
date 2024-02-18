@@ -1,5 +1,5 @@
 import express from "express";
-import { loginUser, validateToken } from "../controller/authController";
+import { loginUser, validateToken, logoutUser } from "../controller/authController";
 import { check } from "express-validator";
 import { verifyToken } from "../middleware/authMiddlewares";
 
@@ -17,5 +17,7 @@ router.post(
 );
 
 router.get("/validate-token", verifyToken, validateToken)
+
+router.post("/logout", logoutUser)
 
 export default router;
