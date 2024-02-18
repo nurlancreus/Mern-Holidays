@@ -28,7 +28,7 @@ export const userRegister = async (req: Request, res: Response) => {
       maxAge: 864_000_00,
     });
 
-    return res.sendStatus(200);
+    return res.status(200).send({ message: "User successfully registered", ok: true });
   } catch (error) {
     console.error(error);
     res.status(500).send({ message: "Something went wrong" });

@@ -12,9 +12,14 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+  })
+);
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 8800;
 const MONGODB_URL = process.env.MONGO_DATABASE_URL!;
 
 app.use("/api/auth", authRoutes);
