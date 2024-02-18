@@ -7,14 +7,24 @@ export default function Header() {
         <span className="text-3xl font-bold tracking-tight text-white">
           <Link to="/">MernHolidays.com</Link>
         </span>
-        <span className="flex space-x-2">
-          <Link
-            to="/sign-in"
-            className="flex items-center px-3 font-bold bg-white text-blue-800 hover:bg-gray-100"
-          >
-            Sign in
-          </Link>
-        </span>
+        <div className="flex items-center gap-4">
+          <span className="flex space-x-2">
+            <Link
+              to="/sign-in"
+              className="flex items-center bg-white px-3 py-1 font-bold text-blue-800 hover:bg-gray-100"
+            >
+              Sign in
+            </Link>
+          </span>
+          <span className="flex space-x-2">
+            <Link
+              to="/register"
+              className="flex items-center bg-white px-3 py-1 font-bold text-blue-800 hover:bg-gray-100"
+            >
+              Register
+            </Link>
+          </span>
+        </div>
       </div>
     </header>
   );
