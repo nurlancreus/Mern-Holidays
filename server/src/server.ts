@@ -9,6 +9,7 @@ import authRoutes from "./routes/authRouter";
 
 // CONFIGURATION
 import "dotenv/config";
+import path from "path";
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
@@ -23,6 +24,10 @@ app.use(
 const PORT = process.env.PORT || 8800;
 const MONGODB_URL = process.env.MONGO_DATABASE_URL!;
 
+// USE STATIC ASSETS MIDDLEWARE
+app.use(express.static(path.join(__dirname, "../../client/dist")));
+
+// USE ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 
@@ -32,5 +37,5 @@ mongoose
   .then(() => console.log(`Connected to ${MONGODB_URL}`));
 
 app.listen(PORT, () => {
-  console.log("server running");
+  console.log(`server running on localhost:${PORT}`);
 });
