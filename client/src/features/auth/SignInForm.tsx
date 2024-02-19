@@ -27,7 +27,7 @@ export default function SignInForm() {
       className="flex flex-col gap-5"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 className="mb-2 text-3xl font-bold">Sign In</h2>
+      <h2 className="mb-2 text-3xl font-bold">Sign in</h2>
       <label
         htmlFor="email"
         className="flex-1 space-y-2 text-sm font-bold text-gray-700"

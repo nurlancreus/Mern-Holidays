@@ -14,7 +14,7 @@ export default function Header() {
           <Link to="/">MernHolidays.com</Link>
         </span>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           {isLoggedIn ? (
             <>
               <Link
@@ -37,7 +37,7 @@ export default function Header() {
                 to="/sign-in"
                 className="flex items-center bg-white px-3 py-1 font-bold text-blue-800 hover:bg-gray-100"
               >
-                Sign in
+                Sign In
               </Link>
 
               <Link
@@ -64,7 +64,7 @@ function SignOutButton() {
         signOut();
       }}
     >
-      Sign out
+      Sign Out
     </button>
   );
 }
