@@ -1,15 +1,27 @@
+import path from "path";
 import express, { Request, Response } from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
+
+import { v2 as cloudinary } from "cloudinary";
 
 // IMPORT ROUTES
 import userRoutes from "./routes/usersRouter";
 import authRoutes from "./routes/authRouter";
 
 // CONFIGURATION
+// IMPORT DOTENV
 import "dotenv/config";
-import path from "path";
+
+// CLOUDINARY CONFIG
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// GENERAL MIDDLEWARES
 const app = express();
 app.use(cookieParser());
 app.use(express.json());
