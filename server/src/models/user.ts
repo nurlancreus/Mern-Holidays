@@ -9,7 +9,7 @@ export type TUser = {
   lastName: string;
 };
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema<TUser>({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   firstName: { type: String, required: true },

@@ -9,6 +9,7 @@ import { v2 as cloudinary } from "cloudinary";
 // IMPORT ROUTES
 import userRoutes from "./routes/usersRouter";
 import authRoutes from "./routes/authRouter";
+import myHotelRoutes from "./routes/myHotelsRouter";
 
 // CONFIGURATION
 // IMPORT DOTENV
@@ -42,6 +43,7 @@ app.use(express.static(path.join(__dirname, "../../client/dist")));
 // USE ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/my-hotels", myHotelRoutes);
 
 // CONNECTION
 mongoose
