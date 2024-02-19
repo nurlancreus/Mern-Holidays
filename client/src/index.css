@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .form-input {
+    @apply w-full rounded border px-2 py-1 font-normal;
+  }
+}

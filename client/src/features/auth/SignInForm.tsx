@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useSignIn } from "./useSignIn";
 import { Link } from "react-router-dom";
+import InputField from "@/shared/InputField";
 
 export type TSignInFormData = {
   email: string;
@@ -28,31 +29,19 @@ export default function SignInForm() {
       onSubmit={handleSubmit(onSubmit)}
     >
       <h2 className="mb-2 text-3xl font-bold">Sign in</h2>
-      <label
-        htmlFor="email"
-        className="flex-1 space-y-2 text-sm font-bold text-gray-700"
-      >
-        <span>Email</span>
-
+      <InputField label="Email" error={errors.email?.message}>
         <input
           type="email"
           id="email"
-          className="w-full rounded border px-2 py-1 font-normal"
+          className="form-input"
           {...register("email", { required: "This field is required" })}
         />
-        {errors.email && (
-          <span className="text-red-500">{errors.email.message}</span>
-        )}
-      </label>
-      <label
-        htmlFor="password"
-        className="flex-1 space-y-2 text-sm font-bold text-gray-700"
-      >
-        <span>Password</span>
+      </InputField>
+      <InputField label="Password" error={errors.password?.message}>
         <input
           type="password"
           id="password"
-          className="w-full rounded border px-2 py-1 font-normal"
+          className="form-input"
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -61,10 +50,7 @@ export default function SignInForm() {
             },
           })}
         />
-        {errors.password && (
-          <span className="text-red-500">{errors.password.message}</span>
-        )}
-      </label>
+      </InputField>
       <div className="flex items-center justify-between">
         <span>
           Not Registered?{" "}

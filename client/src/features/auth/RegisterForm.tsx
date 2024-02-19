@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useRegister } from "./useRegister";
 import { Link } from "react-router-dom";
+import InputField from "@/shared/InputField";
 
 export type TRegisterFormData = {
   firstName: string;
@@ -33,63 +34,36 @@ export default function RegisterForm() {
     >
       <h2 className="mb-2 text-3xl font-bold">Create an Account </h2>
       <div className="flex flex-col gap-5 md:flex-row">
-        <label
-          htmlFor="firstName"
-          className="flex-1 space-y-2 text-sm font-bold text-gray-700"
-        >
-          <span>First Name</span>
-
+        <InputField label="First Name" error={errors.firstName?.message}>
           <input
             type="text"
             id="firstName"
-            className="w-full rounded border px-2 py-1 font-normal"
+            className="form-input"
             {...register("firstName", { required: "This field is required" })}
           />
-          {errors.firstName && (
-            <span className="text-red-500">{errors.firstName.message}</span>
-          )}
-        </label>
-        <label
-          htmlFor="lastName"
-          className="flex-1 space-y-2 text-sm font-bold text-gray-700"
-        >
-          <span>Last Name</span>
+        </InputField>
+        <InputField label="Last Name" error={errors.lastName?.message}>
           <input
             type="text"
             id="lastName"
-            className="w-full rounded border px-2 py-1 font-normal"
+            className="form-input"
             {...register("lastName", { required: "This field is required" })}
           />
-          {errors.lastName && (
-            <span className="text-red-500">{errors.lastName.message}</span>
-          )}
-        </label>
+        </InputField>
       </div>
-      <label
-        htmlFor="email"
-        className="flex-1 space-y-2 text-sm font-bold text-gray-700"
-      >
-        <span>Email</span>
-
+      <InputField label="Email" error={errors.email?.message}>
         <input
           type="email"
           id="email"
-          className="w-full rounded border px-2 py-1 font-normal"
+          className="form-input"
           {...register("email", { required: "This field is required" })}
         />
-        {errors.email && (
-          <span className="text-red-500">{errors.email.message}</span>
-        )}
-      </label>
-      <label
-        htmlFor="password"
-        className="flex-1 space-y-2 text-sm font-bold text-gray-700"
-      >
-        <span>Password</span>
+      </InputField>
+      <InputField label="Password" error={errors.password?.message}>
         <input
           type="password"
           id="password"
-          className="w-full rounded border px-2 py-1 font-normal"
+          className="form-input"
           {...register("password", {
             required: "This field is required",
             minLength: {
@@ -98,19 +72,15 @@ export default function RegisterForm() {
             },
           })}
         />
-        {errors.password && (
-          <span className="text-red-500">{errors.password.message}</span>
-        )}
-      </label>
-      <label
-        htmlFor="confirmPassword"
-        className="flex-1 space-y-2 text-sm font-bold text-gray-700"
+      </InputField>
+      <InputField
+        label="Confirm Password"
+        error={errors.confirmPassword?.message}
       >
-        <span>Confirm Password</span>
         <input
           type="password"
           id="confirmPassword"
-          className="w-full rounded border px-2 py-1 font-normal"
+          className="form-input"
           {...register("confirmPassword", {
             validate: (value) => {
               if (!value) return "This field is required";
@@ -119,10 +89,7 @@ export default function RegisterForm() {
             },
           })}
         />
-        {errors.confirmPassword && (
-          <span className="text-red-500">{errors.confirmPassword.message}</span>
-        )}
-      </label>
+      </InputField>
       <div className="flex items-center justify-between">
         <span>
           Already have an account?{" "}
