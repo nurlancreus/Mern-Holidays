@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { useRegister } from "./useRegister";
 import { Link } from "react-router-dom";
 import InputField from "@/shared/InputField";
+import FormTitle from "@/shared/FormTitle";
+import SubmitBtn from "@/shared/SubmitBtn";
 
 export type TRegisterFormData = {
   firstName: string;
@@ -19,7 +21,7 @@ export default function RegisterForm() {
     formState: { errors },
   } = useForm<TRegisterFormData>();
 
-  const { mutate: signIn } = useRegister();
+  const { mutate: signIn, isPending } = useRegister();
 
   const onSubmit = (formData: TRegisterFormData) => {
     signIn(formData);
@@ -32,7 +34,7 @@ export default function RegisterForm() {
       className="flex flex-col gap-5"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 className="mb-2 text-3xl font-bold">Create an Account </h2>
+      <FormTitle>Create an Account </FormTitle>
       <div className="flex flex-col gap-5 md:flex-row">
         <InputField label="First Name" error={errors.firstName?.message}>
           <input
@@ -100,9 +102,7 @@ export default function RegisterForm() {
             Sign in here
           </Link>
         </span>
-        <button className="bg-blue-600 p-2 text-lg font-bold text-white hover:bg-blue-500">
-          Create Account
-        </button>
+        <SubmitBtn isLoading={isPending}>Create Account</SubmitBtn>
       </div>
     </form>
   );

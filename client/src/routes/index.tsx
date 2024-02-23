@@ -32,7 +32,7 @@ export default function AppRoutes() {
             </>
           )}
 
-          {isLoggendIn && (
+          {true && (
             <>
               <Route path="hotel/:hotelId/booking" element={<BookingPage />} />
               <Route path="add-hotel" element={<AddHotelPage />} />

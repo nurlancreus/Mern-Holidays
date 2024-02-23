@@ -2,6 +2,8 @@ import { useForm } from "react-hook-form";
 import { useSignIn } from "./useSignIn";
 import { Link } from "react-router-dom";
 import InputField from "@/shared/InputField";
+import FormTitle from "@/shared/FormTitle";
+import SubmitBtn from "@/shared/SubmitBtn";
 
 export type TSignInFormData = {
   email: string;
@@ -15,7 +17,7 @@ export default function SignInForm() {
     formState: { errors },
   } = useForm<TSignInFormData>();
 
-  const { mutate: signIn } = useSignIn();
+  const { mutate: signIn, isPending } = useSignIn();
 
   const onSubmit = (formData: TSignInFormData) => {
     signIn(formData);
@@ -28,7 +30,7 @@ export default function SignInForm() {
       className="flex flex-col gap-5"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <h2 className="mb-2 text-3xl font-bold">Sign in</h2>
+      <FormTitle>Sign in</FormTitle>
       <InputField label="Email" error={errors.email?.message}>
         <input
           type="email"
@@ -61,9 +63,7 @@ export default function SignInForm() {
             Create an account here
           </Link>
         </span>
-        <button className="bg-blue-600 p-2 text-lg font-bold text-white hover:bg-blue-500">
-          Sign in
-        </button>
+        <SubmitBtn isLoading={isPending}>Sign in</SubmitBtn>
       </div>
     </form>
   );

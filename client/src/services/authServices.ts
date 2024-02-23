@@ -1,7 +1,6 @@
 import { TRegisterFormData } from "@/features/auth/RegisterForm";
 import { TSignInFormData } from "@/features/auth/SignInForm";
-
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
+import { API_BASE_URL } from "@/utils/constants";
 
 // user register
 export const register = async (formData: TRegisterFormData) => {

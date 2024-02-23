@@ -1,4 +1,4 @@
-import AddHotelForm from "@/features/myHotels/AddHotelForm";
+import AddHotelForm from "@/features/hotels/AddHotelForm";
 
 export default function AddHotelPage() {
   return <AddHotelForm />;

@@ -1,19 +1,10 @@
 import { ReactNode, isValidElement } from "react";
-import {
-  FieldError,
-  Merge,
-  FieldErrorsImpl,
-  FieldValues,
-} from "react-hook-form";
+import ErrorField from "./ErrorField";
 
 type TInputFieldProps = {
   children: ReactNode;
   label: string;
-  error?:
-    | string
-    | FieldError
-    | Merge<FieldError, FieldErrorsImpl<FieldValues>>
-    | undefined;
+  error?: string
 };
 
 export default function InputField({
@@ -33,7 +24,7 @@ export default function InputField({
       <span>{label}</span>
 
       {children}
-      {error && <span className="text-red-500">{error as string}</span>}
+      {error && <ErrorField>{error}</ErrorField>}
     </label>
   );
 }
