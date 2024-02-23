@@ -45,6 +45,11 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/my-hotels", myHotelRoutes);
 
+// ALL ROUTE REQUESTS THAT ARE NOT API END POINT GO TO INDEX.HTML
+app.get("*", (req: Request, res: Response) => {
+  res.sendFile(path.join(__dirname, "../../client/dist/index.html"));
+});
+
 // CONNECTION
 mongoose
   .connect(MONGODB_URL)
